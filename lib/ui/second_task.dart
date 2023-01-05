@@ -9,50 +9,50 @@ class SecondTask extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AreaCalcCubit(),
-      child: Scaffold(
-        appBar: AppBar(),
-        body:Center(
-          child: Column(
-            children: [
-              BlocBuilder<AreaCalcCubit,AreaState>(
-                builder: (context, state) {
-                  if(state is RectangleState){
-                    return Text("Area of your rectangle is : ${state.rectangleArea}");
-                  }
-                  if(state is CircleState){
-                    return Text("Area of your circle is : ${state.circleArea}");
-                  }
-                  if(state is SquareState){
-                    return Text("Area of your square is : ${state.squareArea}");
-                  }
-                  return Row(
-                    children: [
-                      TextButton(onPressed: (){
-                        BlocProvider.of<AreaCalcCubit>(context)
-                            .calcRectArea(12, 12);
-                      }, child: const Text("Rectangle")),
-                      TextButton(onPressed: (){
-                        BlocProvider.of<AreaCalcCubit>(context)
-                            .calcCircleArea(12, 12);
+    return Scaffold(
+      appBar: AppBar(),
+      body:Center(
+        child: Column(
+          children: [
+            SizedBox(height: 200,),
+            BlocBuilder<AreaCalcCubit,AreaState>(
+              builder: (context, state) {
+                if(state is RectangleState){
+                  return Text("Area of your rectangle is : ${state.rectangleArea}");
+                }
+                if(state is CircleState){
+                  return Text("Area of your circle is : ${state.circleArea}");
+                }
+                if(state is SquareState){
+                  return Text("Area of your square is : ${state.squareArea}");
+                }
+                return const Text("Tap the button") ;
+              },
 
-                      }, child: const Text("Circle")),
-                      TextButton(onPressed: (){
-                        BlocProvider.of<AreaCalcCubit>(context)
-                            .calcSquareArea(12, 12);
-                      }, child: const  Text("Square")),
-                    ],
-                  );
-                },
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                TextButton(onPressed: (){
+                  BlocProvider.of<AreaCalcCubit>(context)
+                      .calcRectArea(12, 12);
+                }, child: const Text("Rectangle")),
+                TextButton(onPressed: (){
+                  BlocProvider.of<AreaCalcCubit>(context)
+                      .calcCircleArea(12, 12);
 
-              ),
+                }, child: const Text("Circle")),
+                TextButton(onPressed: (){
+                  BlocProvider.of<AreaCalcCubit>(context)
+                      .calcSquareArea(12, 12);
+                }, child: const  Text("Square")),
+              ],
+            )
 
-            ],
-          ),
-        )
+          ],
+        ),
+      )
 
-      ),
     );
   }
 }
