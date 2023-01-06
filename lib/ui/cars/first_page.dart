@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:working_with_bloc_cubit/bloc/cars/cars_cubit.dart';
 import 'package:working_with_bloc_cubit/bloc/cars/cars_state.dart';
+import 'package:working_with_bloc_cubit/ui/cars/second_page.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({Key? key}) : super(key: key);
@@ -9,6 +10,13 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => SecondPage(),));
+          }, icon: Icon(Icons.next_plan))
+        ],
+      ),
       body: BlocBuilder<CarsCubit,CarsState>(
           builder:(context, state) {
             if(state is InitialState){
