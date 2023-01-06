@@ -5,11 +5,11 @@ import '../../models/my_reponse.dart';
 import 'api_client.dart';
 
 class ApiService extends ApiClient {
-  Future<MyResponse> getAllCars(int id) async {
+  Future<MyResponse> getAllCars() async {
     // Dio dio = Dio();
     MyResponse myResponse = MyResponse(error: "");
     try {
-      Response response = await dio.get("${dio.options.baseUrl}/albums/$id");
+      Response response = await dio.get("https://easyenglishuzb.free.mockoapp.net/companies");
       if (response.statusCode == 200) {
         myResponse.data = Car.fromJson(response.data);
       }
@@ -20,5 +20,5 @@ class ApiService extends ApiClient {
 
     return myResponse;
   }
-  
+
 }
