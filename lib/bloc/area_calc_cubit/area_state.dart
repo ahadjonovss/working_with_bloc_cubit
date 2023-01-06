@@ -1,11 +1,6 @@
 abstract class AreaState{}
 
-class InitialState extends AreaState{
-  InitialState({required this.a,required this.b});
 
-  num a;
-  num b;
-}
 
 
 class CircleState extends AreaState{
