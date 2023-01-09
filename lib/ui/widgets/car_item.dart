@@ -14,7 +14,7 @@ class CarItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => CarPage(),));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => CarPage(id:car.id),));
       },
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),

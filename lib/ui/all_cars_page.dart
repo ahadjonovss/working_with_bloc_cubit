@@ -62,7 +62,7 @@ class AllCarsPage extends StatelessWidget {
               return Center(
                 child: IconButton(onPressed: (){
                   context.read<CarsBloc>().add(FetchAllCarsEvent());
-                },icon: Icon(Icons.download)),
+                },icon: Icon(Icons.download,color: Colors.white,)),
               );
             },),
         ));

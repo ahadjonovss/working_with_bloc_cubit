@@ -27,7 +27,7 @@ class ApiService extends ApiClient {
     MyResponse myResponse = MyResponse(error: "");
     try {
       Response response = await dio
-          .get("https://easyenglishuzb.free.mockoapp.net/companies/id");
+          .get("https://easyenglishuzb.free.mockoapp.net/companies/$id");
       if (response.statusCode == 200) {
         myResponse.data = CarFullInfo.fromJson(response.data);
       }
