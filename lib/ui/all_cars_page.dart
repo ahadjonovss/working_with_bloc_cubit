@@ -5,6 +5,7 @@ import 'package:working_with_bloc_cubit/bloc/cars/cars_event.dart';
 import 'package:working_with_bloc_cubit/bloc/cars/cars_state.dart';
 import 'package:working_with_bloc_cubit/data/repositories/cars_repository.dart';
 import 'package:working_with_bloc_cubit/ui/widgets/car_item.dart';
+import 'package:working_with_bloc_cubit/ui/widgets/home_page_shimmer.dart';
 
 class AllCarsPage extends StatelessWidget {
   const AllCarsPage({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class AllCarsPage extends StatelessWidget {
           body: BlocBuilder<CarsBloc,CarsState>(
             builder: (BuildContext context, state) {
               if( state is LoadCarsInProgress){
-                return Center(child: CircularProgressIndicator(),);
+                return SafeArea(child: CarItemShimmer());
               }
               if(state is LoadCarsInSuccess){
                 return SizedBox(

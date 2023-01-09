@@ -15,24 +15,27 @@ class CarPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => CarsBloc(CarsRepository()),
         child: Scaffold(
-          body: BlocBuilder<CarsBloc,CarsState>(
-              builder: (context, state) {
-                if(state is LoadSingleCarInSuccess){
-                  return CarDetails(car: state.car,);
-                }
-                if(state is LoadCarsInProgress){
-                  return Center(child: CircularProgressIndicator(),);
-                }
-                if(state is LoadSingleCarInFailury){
-                  return Center(child: Text(state.error),);
-                }
-                return Center(
-                  child: IconButton(onPressed: (){
-                    context.read<CarsBloc>().add(FetchSingleCarEvent(id));
-                  }, icon: Icon(Icons.download)),
-                );
+          backgroundColor: Colors.black,
+          body: SafeArea(
+            child: BlocBuilder<CarsBloc,CarsState>(
+                builder: (context, state) {
+                  if(state is LoadSingleCarInSuccess){
+                    return CarDetails(car: state.car,);
+                  }
+                  if(state is LoadCarsInProgress){
+                    return Center(child: CircularProgressIndicator(),);
+                  }
+                  if(state is LoadSingleCarInFailury){
+                    return Center(child: Text(state.error),);
+                  }
+                  return Center(
+                    child: IconButton(onPressed: (){
+                      context.read<CarsBloc>().add(FetchSingleCarEvent(id));
+                    }, icon: Icon(Icons.download)),
+                  );
 
-              },),
+                },),
+          ),
         ));
   }
 }
