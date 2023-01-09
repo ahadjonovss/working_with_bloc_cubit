@@ -16,14 +16,14 @@ class SecondPage extends StatelessWidget {
           builder: (context, state) {
             if (state is InitialState) {
               return Column(children: [
-                Center(
+                const Center(
                   child: Text("No data"),
                 ),
                 IconButton(
                     onPressed: () {
                       context.read<CarsCubit>().fetchCars();
                     },
-                    icon: Icon(Icons.update)),
+                    icon: const Icon(Icons.update)),
               ]);
             }
             if (state is LoadCarsInProgress) {
@@ -52,7 +52,7 @@ class SecondPage extends StatelessWidget {
                 onPressed: () {
                   context.read<CarsCubit>().fetchCars();
                 },
-                icon: Icon(Icons.update));
+                icon: const Icon(Icons.update));
           },
           listener: (context, state) {
             if (state is LoadCarsInSuccess) {
