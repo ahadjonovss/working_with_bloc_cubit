@@ -1,30 +1,47 @@
 class Car {
   Car({
+    required this.data,
+  });
+
+  List<Datum> data;
+
+  factory Car.fromJson(Map<String, dynamic> json) => Car(
+    data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+  );
+
+  Map<String, dynamic> toJson() => {
+    "data": List<dynamic>.from(data.map((x) => x.toJson())),
+  };
+}
+
+class Datum {
+  Datum({
     required this.id,
     required this.carModel,
+    required this.averagePrice,
     required this.logo,
     required this.establishedYear,
-    required this.averagePrice,
-    required this.description,
-    required this.carPics,
   });
 
   int id;
   String carModel;
+  int averagePrice;
   String logo;
   int establishedYear;
-  int averagePrice;
-  String description;
-  List<String> carPics;
 
-  factory Car.fromJson(Map<String, dynamic> json) => Car(
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
     id: json["id"],
     carModel: json["car_model"],
+    averagePrice: json["average_price"],
     logo: json["logo"],
     establishedYear: json["established_year"],
-    averagePrice: json["average_price"],
-    description: json["description"],
-    carPics: List<String>.from(json["car_pics"].map((x) => x)),
   );
 
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "car_model": carModel,
+    "average_price": averagePrice,
+    "logo": logo,
+    "established_year": establishedYear,
+  };
 }

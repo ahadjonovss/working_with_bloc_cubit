@@ -1,11 +1,11 @@
-class CarsShortDataModel {
-  CarsShortDataModel({
+class CarFullInfo {
+  CarFullInfo({
     required this.data,
   });
 
   List<Datum> data;
 
-  factory CarsShortDataModel.fromJson(Map<String, dynamic> json) => CarsShortDataModel(
+  factory CarFullInfo.fromJson(Map<String, dynamic> json) => CarFullInfo(
     data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
   );
 
