@@ -1,8 +1,8 @@
 abstract class CarsEvent{}
 
-class FetchAllCars extends CarsEvent{}
+class FetchAllCarsEvent extends CarsEvent{}
 
-class FetchSingleCar extends CarsEvent{
-  FetchSingleCar(this.id);
+class FetchSingleCarEvent extends CarsEvent{
+  FetchSingleCarEvent(this.id);
   final int id;
 }

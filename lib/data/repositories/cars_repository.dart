@@ -3,4 +3,6 @@ import 'package:working_with_bloc_cubit/data/services/api_service/api_service.da
 
 class CarsRepository{
   getAllCars()=>ApiService().getAllCars();
+
+  getSingleCar(id)=>ApiService().getSingleCar(id);
 }
