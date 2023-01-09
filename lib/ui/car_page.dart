@@ -19,6 +19,9 @@ class CarPage extends StatelessWidget {
           body: SafeArea(
             child: BlocBuilder<CarsBloc,CarsState>(
                 builder: (context, state) {
+                  if(state is InitialState){
+                    context.read<CarsBloc>().add(FetchSingleCarEvent(id));
+                  }
                   if(state is LoadSingleCarInSuccess){
                     return CarDetails(car: state.car,);
                   }

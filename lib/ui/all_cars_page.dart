@@ -18,8 +18,11 @@ class AllCarsPage extends StatelessWidget {
           backgroundColor: Colors.black,
           body: BlocBuilder<CarsBloc,CarsState>(
             builder: (BuildContext context, state) {
+              if(state is InitialState){
+                context.read<CarsBloc>().add(FetchAllCarsEvent());
+              }
               if( state is LoadCarsInProgress){
-                return SafeArea(child: CarItemShimmer());
+                return const  SafeArea(child: CarItemShimmer());
               }
               if(state is LoadCarsInSuccess){
                 return SizedBox(
